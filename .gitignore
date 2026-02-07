@@ -56,3 +56,15 @@ Thumbs.db
 
 # Misc
 *.log
+logs/
+
+# Uploads (keep directory structure)
+uploads/resumes/*
+!uploads/resumes/.gitkeep
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/

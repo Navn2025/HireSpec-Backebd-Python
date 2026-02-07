@@ -230,8 +230,26 @@ def get_face_engine():
 
 @app.route('/health', methods=['GET'])
 def health_check():
-    """Health check endpoint"""
-    return jsonify({'status': 'ok', 'message': 'Face Auth Server is running'}), 200
+    """Health check endpoint for deployment monitoring"""
+    health_status = {
+        'status': 'ok',
+        'message': 'Face Auth Server is running',
+        'version': '1.0.0',
+        'python_version': '3.11',
+        'environment': 'production' if is_production else 'development'
+    }
+    
+    # Check database connectivity
+    try:
+        conn = sqlite3.connect(DATABASE)
+        conn.execute("SELECT 1")
+        conn.close()
+        health_status['database'] = 'connected'
+    except Exception:
+        health_status['database'] = 'disconnected'
+        health_status['status'] = 'degraded'
+    
+    return jsonify(health_status), 200 if health_status['status'] == 'ok' else 503
 
 @app.route('/', methods=['GET'])
 def root():
