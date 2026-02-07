@@ -1,0 +1,14 @@
+Flask==3.0.0
+flask-cors==4.0.0
+Flask-Mail==0.10.0
+PyJWT==2.8.0
+Pillow==10.2.0
+numpy==1.24.3
+python-dotenv==1.0.1
+pinecone-client==5.0.1
+mediapipe==0.10.14
+opencv-python==4.10.0.84
+facenet-pytorch==2.6.0
+torch==2.2.2
+torchvision==0.17.2
+gunicorn==21.2.0

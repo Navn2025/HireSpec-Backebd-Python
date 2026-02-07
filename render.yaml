@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: face-auth-backend
+    env: python
+    runtime: python-3.11.8
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    autoDeploy: true
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: COOKIE_SAMESITE
+        value: None
+      - key: COOKIE_SECURE
+        value: "true"
